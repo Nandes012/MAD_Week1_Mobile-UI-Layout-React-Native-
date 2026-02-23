@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Alert,
   Dimensions,
   Image,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -19,11 +18,8 @@ const images = [
   require("../../assets/images/splash-icon.png"),
 ];
 
-const index = () => {
-  const [activeTab, setActiveTab] = useState(1);
-
+const Index = () => {
   const handleTabPress = (tab: number) => {
-    setActiveTab(tab);
     Alert.alert("Tab", `Button ${tab} pressed`);
   };
 
@@ -32,9 +28,8 @@ const index = () => {
   };
 
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.contentWrapper}>
-        {/* Profile Section */}
         <View style={styles.profileSection}>
           <Image
             source={require("../../assets/images/react-logo.png")}
@@ -43,7 +38,6 @@ const index = () => {
           <Text style={styles.profileText}>Anonymous</Text>
         </View>
 
-        {/* Tabs */}
         <View style={styles.tabSection}>
           <TouchableOpacity
             style={[styles.tabButton, styles.tabButton1]}
@@ -60,10 +54,8 @@ const index = () => {
           </TouchableOpacity>
         </View>
 
-        {/* Cyan Margin */}
         <View style={styles.cyanMargin} />
 
-        {/* Content Section - 6 Images in 2x3 Grid */}
         <View style={styles.contentSection}>
           {images.map((image, index) => (
             <View key={index} style={styles.imageWrapper}>
@@ -72,7 +64,6 @@ const index = () => {
           ))}
         </View>
 
-        {/* Bottom Button */}
         <TouchableOpacity
           style={styles.bottomButton}
           onPress={handleBottomButtonPress}
@@ -80,12 +71,12 @@ const index = () => {
           <Text style={styles.bottomButtonText}>Press Me</Text>
         </TouchableOpacity>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
 const screenWidth = Dimensions.get("window").width;
-const imageSize = (screenWidth - 120) / 3; // 2 columns with padding and margins
+const imageSize = (screenWidth - 120) / 3;
 
 const styles = StyleSheet.create({
   container: {
@@ -97,20 +88,16 @@ const styles = StyleSheet.create({
   contentWrapper: {
     backgroundColor: "#fff",
     marginVertical: 15,
-    marginHorizontal: 0,
-    flex: 1,
   },
 
   profileSection: {
     alignItems: "center",
     marginBottom: 40,
-    paddingHorizontal: 20,
   },
 
   profileImage: {
     width: 120,
     height: 120,
-    borderRadius: 8,
     marginBottom: 25,
     marginTop: 103,
   },
@@ -122,21 +109,17 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
     backgroundColor: "#FFC107",
-    borderRadius: 4,
     marginBottom: 20,
   },
 
   tabSection: {
     flexDirection: "row",
-    marginHorizontal: 0,
-    marginBottom: 0,
   },
 
   tabButton: {
     flex: 1,
     paddingVertical: 30,
     paddingHorizontal: 35,
-    borderRadius: 0,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -182,18 +165,15 @@ const styles = StyleSheet.create({
 
   bottomButton: {
     backgroundColor: "#1E90FF",
-    marginHorizontal: 0,
     marginBottom: 90,
     paddingVertical: 20,
-    borderRadius: 1,
     alignItems: "center",
   },
 
   bottomButtonText: {
     color: "#fff",
     fontSize: 16,
-    fontWeight: "bold",
   },
 });
 
-export default index;
+export default Index;
